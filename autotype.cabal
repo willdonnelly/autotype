@@ -1,0 +1,40 @@
+name:          autotype
+version:       0.1
+category:      Automation
+synopsis:      Automatic typing of strings into windows.
+
+description:   The autotype library implements the ability to send keystrokes
+               to application windows. The keystrokes are represented as a
+               normal Haskell string, and the library handles all the details
+               of converting the characters into keystrokes and delivering them
+               to the application.
+
+               Currently the library only supports X11, but support for Windows
+               is planned soon.
+
+               The library does not require the XTest extension as it uses
+               Xlib's built-in 'XSendEvent' function. Unfortunately, this
+               means that some broken programs, notably Firefox and XTerm, will
+               ignore the data it provides. On the upside, this choice allows
+               targeting of individual windows for keystrokes, which is of great
+               importance to applications such as password managers.
+
+homepage:      http://github.com/willdonnelly/autotype
+bug-reports:   http://github.com/willdonnelly/autotype/issues
+stability:     experimental
+author:        Will Donnelly
+maintainer:    Will Donnelly <will.donnelly@gmail.com>
+copyright:     (c) 2009 Will Donnelly
+license:       BSD3
+license-file:  LICENSE
+
+build-type:    Simple
+cabal-version: >= 1.6
+
+library
+  exposed-modules: System.Automation.Type
+  build-depends:   base >= 4 && < 5, X11
+
+source-repository head
+  type:      git
+  location:  git://github.com/willdonnelly/autotype.git
